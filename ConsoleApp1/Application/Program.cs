@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using ConsoleApp1.Utils;
 
 namespace ConsoleApp1
@@ -7,12 +8,13 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
+            /*
             Console.WriteLine("Enter three-digit number");
             Console.WriteLine(StringNumsUtil.CountNumerals(InputUtil.TryEnterNum()));
             Console.WriteLine("Enter numbers, 0 - for stop");
             Console.WriteLine(StringNumsUtil.FindNumWithMaxSumNumerals(InputUtil.TryEnterNumNotZero()));
             
-            /*Console.WriteLine("Enter amount of numbers you want to enter");
+            Console.WriteLine("Enter amount of numbers you want to enter");
             var numbers = InputUtil.EnterListNums(Int32.Parse(InputUtil.TryEnterNum()));
             var firstThreeNums = StringNumsUtil.GetFirstThreeNums(StringNumsUtil.GetOddNums(numbers));
             var sumFirstNums = StringNumsUtil.SumStringNums(firstThreeNums);
@@ -52,6 +54,21 @@ namespace ConsoleApp1
             Console.WriteLine(amount);
             Console.WriteLine(RowUtil.SumFibonacciNums(6));
         */
+            
+            Console.WriteLine("--------------First module is end--------------------");
+
+           /* Console.WriteLine("Enter array size:");
+            var array = FillArray(Int32.Parse(InputUtil.TryEnterNum()));
+            Console.WriteLine($"The most common number - {GetMostCommonNumber(array).Key}");
+            Console.WriteLine($"The amount of most common number - {GetMostCommonNumber(array).Count()}");
+            
+            */
+           Console.WriteLine("Enter size of array");
+           var array = ArrayUtil.FillArray(Int32.Parse(InputUtil.TryEnterNum())); 
+           Console.WriteLine(ArrayUtil.IsOrderedByAscending(array)); 
+           Console.WriteLine(ArrayUtil.IsOrderedByDescending(array));
+           Console.WriteLine("Enter size of array");
+           array = ArrayUtil.FillArray(Int32.Parse(InputUtil.TryEnterNum()));
         }
     }
 }

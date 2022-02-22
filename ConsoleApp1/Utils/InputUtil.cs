@@ -6,14 +6,14 @@ namespace ConsoleApp1.Utils
     {
         public static string TryEnterNum()
         {
-            var numbers = Console.ReadLine();
-            if (!Int32.TryParse(numbers, out int parsedNum))
+            var number = Console.ReadLine();
+            if (!Int32.TryParse(number, out int parsedNum))
             {
                 Console.WriteLine("Incorrect input, try again");
                 return TryEnterNum();
             }
 
-            return numbers;
+            return number;
         }
         
         public static string EnterListNums(int amount)
@@ -56,5 +56,7 @@ namespace ConsoleApp1.Utils
 
             return rez;
         }
+        
+        public static string TryEnter
     }
 }
