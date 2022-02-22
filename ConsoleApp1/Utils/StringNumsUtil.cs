@@ -24,7 +24,6 @@ namespace ConsoleApp1.Utils
 
                    num = string.Empty;
                }
-               
            }
 
            return oddNums;

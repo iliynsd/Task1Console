@@ -39,6 +39,5 @@ namespace ConsoleApp1.Utils
             Console.WriteLine("Too big, try again");
             return TryEnterNumUnder20();
         }
-        
     }
 }
