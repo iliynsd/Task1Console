@@ -4,6 +4,42 @@ namespace ConsoleApp1.Utils
 {
     public static class StringNumsUtil
     {
+        public static int CountNumerals(string numbers)
+        {
+            int result = 0;
+            foreach (var num in numbers)
+            {
+                result += Int32.Parse(num.ToString());
+            }
+            
+            return result;
+        }
+
+        public static string FindNumWithMaxSumNumerals(string numbers)
+        {
+            int maxSum = 0;
+            string maxNum = String.Empty;
+            string num = String.Empty;
+            for (int i=0; i<numbers.Length; i++)
+            {
+                if (numbers[i] != ';')
+                {
+                    num += numbers[i];
+                }
+                else
+                {
+                    if (CountNumerals(num) > maxSum)
+                    { 
+                        maxSum = CountNumerals(num);
+                        maxNum = num;
+                    }
+
+                    num = string.Empty;
+                }
+            }
+            
+            return maxNum;
+        }
         public static string GetOddNums(string numbers)
        {
            string oddNums = string.Empty;

@@ -39,5 +39,22 @@ namespace ConsoleApp1.Utils
             Console.WriteLine("Too big, try again");
             return TryEnterNumUnder20();
         }
+
+        public static string TryEnterNumNotZero()
+        {
+            var rez = string.Empty;
+            var number = string.Empty;
+            do
+            {
+                number = TryEnterNum();
+                if (number != "0")
+                {
+                    rez += number;
+                    rez += ";";
+                }
+            } while (number != "0");
+
+            return rez;
+        }
     }
 }

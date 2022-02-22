@@ -8,11 +8,11 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             Console.WriteLine("Enter three-digit number");
-            Console.WriteLine(NumeralsUtil.CountNumerals(InputUtil.TryEnterNum()));
+            Console.WriteLine(StringNumsUtil.CountNumerals(InputUtil.TryEnterNum()));
             Console.WriteLine("Enter numbers, 0 - for stop");
-            Console.WriteLine(NumeralsUtil.FindMaxNumeral(InputUtil.TryEnterNum()));
-
-            Console.WriteLine("Enter amount of numbers you want to enter");
+            Console.WriteLine(StringNumsUtil.FindNumWithMaxSumNumerals(InputUtil.TryEnterNumNotZero()));
+            
+            /*Console.WriteLine("Enter amount of numbers you want to enter");
             var numbers = InputUtil.EnterListNums(Int32.Parse(InputUtil.TryEnterNum()));
             var firstThreeNums = StringNumsUtil.GetFirstThreeNums(StringNumsUtil.GetOddNums(numbers));
             var sumFirstNums = StringNumsUtil.SumStringNums(firstThreeNums);
@@ -51,6 +51,7 @@ namespace ConsoleApp1
             Console.WriteLine(RowUtil.SumUpAndStopBeforeHundred(6, out amount));
             Console.WriteLine(amount);
             Console.WriteLine(RowUtil.SumFibonacciNums(6));
+        */
         }
     }
 }

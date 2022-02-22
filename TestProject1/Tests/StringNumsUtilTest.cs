@@ -6,6 +6,22 @@ namespace TestProject1
     public class StringNumsUtilTest
     {
         [Test]
+        public void TestCountNumerals()
+        {
+            string num = "345";
+            int result = 12;
+            Assert.AreEqual(result, StringNumsUtil.CountNumerals(num), "Sum of numerals is incorrect");
+        }
+
+        [Test] 
+        public void TestFindNumWithMaxSumNumerals()
+        {
+            string num = "345;67;43;98;";
+            string maxNumeral = "98";
+            Assert.AreEqual(maxNumeral, StringNumsUtil.FindNumWithMaxSumNumerals(num), "Incorrect max numeral");
+        }
+        
+        [Test]
         public void TestGetOddNums()
         {
             string numbers = "21;12;13;16;23;456;789;553;9;8;3;";

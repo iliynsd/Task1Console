@@ -17,10 +17,10 @@ namespace TestProject1
         [Test]
         public void TestSumOfRowWithAmountOfNums()
         {
-            int num1 = 5;
-            int num2 = 12;
-            int sumOfRow = 68;
-            int amountOfNum = 8;
+            int num1 = 6;
+            int num2 = 46;
+            int sumOfRow = 240;
+            int amountOfNum = 11;
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(sumOfRow, RowUtil.SumOfRow(num1, num2, out int amount), "Sum of row is incorrect");
