@@ -7,7 +7,7 @@ namespace ConsoleApp1.Utils
         public static string TryEnterNum()
         {
             var number = Console.ReadLine();
-            if (!Int32.TryParse(number, out int parsedNum))
+            if (!int.TryParse(number, out int parsedNum) || !IsNumberNotNumerals(number))
             {
                 Console.WriteLine("Incorrect input, try again");
                 return TryEnterNum();
@@ -56,7 +56,18 @@ namespace ConsoleApp1.Utils
 
             return rez;
         }
-        
-        public static string TryEnter
+
+        public static int TryEnterThreeDigitNum()
+        {
+            var num = TryEnterNum();
+            if (Math.Abs(int.Parse(num)).ToString().Length == 3)
+            {
+                return int.Parse(num);
+            }
+            Console.WriteLine("Not three digit num");
+            return TryEnterThreeDigitNum();
+        }
+
+        public static bool IsNumberNotNumerals(string num) => int.Parse(num).ToString().Length == num.Length;
     }
 }

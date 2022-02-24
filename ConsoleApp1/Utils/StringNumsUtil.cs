@@ -1,18 +1,21 @@
 using System;
+using System.Linq;
 
 namespace ConsoleApp1.Utils
 {
     public static class StringNumsUtil
     {
-        public static int CountNumerals(string numbers)
+        public static int CountNumerals(int num)
         {
-            int result = 0;
-            foreach (var num in numbers)
+            int s = 0;
+            num = Math.Abs(num);
+            while (num > 0)
             {
-                result += Int32.Parse(num.ToString());
+                s += num % 10;
+                num /= 10 ;
             }
-            
-            return result;
+
+            return s;
         }
 
         public static string FindNumWithMaxSumNumerals(string numbers)
@@ -28,9 +31,9 @@ namespace ConsoleApp1.Utils
                 }
                 else
                 {
-                    if (CountNumerals(num) > maxSum)
+                    if (CountNumerals(int.Parse(num)) > maxSum)
                     { 
-                        maxSum = CountNumerals(num);
+                        maxSum = CountNumerals(int.Parse(num));
                         maxNum = num;
                     }
 
@@ -40,6 +43,11 @@ namespace ConsoleApp1.Utils
             
             return maxNum;
         }
+      /// <summary>
+      /// fdgfdfgd
+      /// </summary>
+      /// <param name="numbers"></param>
+      /// <returns></returns>
         public static string GetOddNums(string numbers)
        {
            string oddNums = string.Empty;
@@ -71,7 +79,7 @@ namespace ConsoleApp1.Utils
            int j = 0;
            for (int i = 0; i < 3; i++)
            {
-               for (; j < numbers.Length - 1; j++)
+               for (; j < numbers.Length; j++)
                {
                    if (numbers[j] != ';')
                    {
@@ -91,25 +99,41 @@ namespace ConsoleApp1.Utils
 
        public static string GetLastThreeNums(string numbers)
        {
-           string lastThreeNums = string.Empty;
-           int j = numbers.Length - 1;
-           for (int i = 0; i < 4;)
+           string result = string.Empty;
+           int count = -1;
+           for (int i = numbers.Length - 1; i > -1; i--)
            {
-               for (; j > -1; j--)
+               if (numbers[i] == ';')
                {
-                   if (numbers[j] == ';')
-                   {
-                       i++;
-                   }
-                   if(i==3)
-                   {
-                       lastThreeNums = numbers.Substring(j);
-                   }
+                   count++;
+                   result += ';';
+                   continue;
                }
+               
+               if (count == 3)
+               {
+                   result[result.Length - 1] 
+                   break;
+               }
+               
+               result += numbers[i];
            }
 
-           return lastThreeNums;
+           return result;
        }
+
+       public static string ReverseString(string data)
+       {
+           string reverseData = string.Empty;
+           for (int i = data.Length-1; i >= 0; i--)
+           {
+               reverseData += data[i];
+           }
+
+           return reverseData;
+       }
+
+       public static bool HasThreeNums(string numbers) => numbers.Count(i => i == ';') > 2; 
 
        public static int SumStringNums(string numbers)
        {

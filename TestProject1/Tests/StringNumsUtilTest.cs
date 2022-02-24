@@ -8,7 +8,7 @@ namespace TestProject1
         [Test]
         public void TestCountNumerals()
         {
-            string num = "345";
+            int num = 345;
             int result = 12;
             Assert.AreEqual(result, StringNumsUtil.CountNumerals(num), "Sum of numerals is incorrect");
         }
