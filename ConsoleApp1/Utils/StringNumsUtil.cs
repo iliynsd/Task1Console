@@ -43,11 +43,7 @@ namespace ConsoleApp1.Utils
             
             return maxNum;
         }
-      /// <summary>
-      /// fdgfdfgd
-      /// </summary>
-      /// <param name="numbers"></param>
-      /// <returns></returns>
+        
         public static string GetOddNums(string numbers)
        {
            string oddNums = string.Empty;
@@ -73,6 +69,20 @@ namespace ConsoleApp1.Utils
            return oddNums;
        }
 
+
+        public static string TryGetOddNums()
+        {
+            Console.WriteLine("Enter amount of numbers you want to enter");
+            var oddNumbers = GetOddNums(InputUtil.EnterListNums(Int32.Parse(InputUtil.TryEnterNum())));
+            if (!HasThreeNums(oddNumbers))
+            {
+                Console.WriteLine("Has not got three odd numbers");
+                return TryGetOddNums();
+            }
+
+            return oddNumbers;
+        }
+        
        public static string GetFirstThreeNums(string numbers)
        {
            string firstThreeNums = string.Empty;
@@ -97,7 +107,7 @@ namespace ConsoleApp1.Utils
            return firstThreeNums;
        }
 
-       public static string GetLastThreeNums(string numbers)
+       public static string GetLastThreeNumsReversed(string numbers)
        {
            string result = string.Empty;
            int count = -1;
@@ -112,7 +122,7 @@ namespace ConsoleApp1.Utils
                
                if (count == 3)
                {
-                   result[result.Length - 1] 
+                   result = result.Remove(result.Length - 1); 
                    break;
                }
                

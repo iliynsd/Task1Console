@@ -31,12 +31,12 @@ namespace ConsoleApp1.Utils
         public static string TryEnterNumUnder20()
         {
             var number = TryEnterNum();
-            if (Int32.Parse(number) < 21)
+            if (int.Parse(number) < 21 && int.Parse(number) > 0)
             {
                 return number;
             }
 
-            Console.WriteLine("Too big, try again");
+            Console.WriteLine("Incorrect input, try again");
             return TryEnterNumUnder20();
         }
 
@@ -64,10 +64,23 @@ namespace ConsoleApp1.Utils
             {
                 return int.Parse(num);
             }
+
             Console.WriteLine("Not three digit num");
             return TryEnterThreeDigitNum();
         }
 
         public static bool IsNumberNotNumerals(string num) => int.Parse(num).ToString().Length == num.Length;
+
+        public static int TryEnterNaturalNum()
+        {
+            var number = TryEnterNum();
+            if (int.Parse(number) > 0)
+            {
+                return int.Parse(number);
+            }
+
+            Console.WriteLine("Incorrect input, try again");
+            return TryEnterNaturalNum();
+        }
     }
 }

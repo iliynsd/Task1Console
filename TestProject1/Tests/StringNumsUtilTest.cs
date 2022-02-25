@@ -42,7 +42,7 @@ namespace TestProject1
         {
             string numbers = "21;12;13;16;23;456;789;553;9;8;3;";
             string lastThreeNums = "9;8;3;";
-            Assert.AreEqual(lastThreeNums, StringNumsUtil.GetLastThreeNums(numbers), "Get not last three numbers");
+            Assert.AreEqual(lastThreeNums, StringNumsUtil.ReverseString(StringNumsUtil.GetLastThreeNumsReversed(numbers)), "Get not last three numbers");
         }
 
         [Test]
