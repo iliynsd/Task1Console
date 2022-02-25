@@ -16,8 +16,8 @@ namespace ConsoleApp1.Utils
         public static int SumOfRow(int num1, int num2, out int amount)
         {
             int sum = 0;
-            amount = 1;
-            for (int i = num1; i < num2; i+=4, amount++)
+            amount = 0;
+            for (int i = num1; i <= num2; i+=4, amount++)
             {
                 sum += i;
             }
