@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using ConsoleApp1.Utils;
 
 namespace ConsoleApp1
@@ -7,6 +8,7 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
+            
             Console.WriteLine("Enter three-digit number");
             Console.WriteLine("Sum - " + StringNumsUtil.CountNumerals(InputUtil.TryEnterThreeDigitNum()));
 
@@ -70,19 +72,38 @@ namespace ConsoleApp1
 
             Console.WriteLine("--------------First module is end--------------------");
 
-            /* Console.WriteLine("Enter array size:");
-             var array = FillArray(Int32.Parse(InputUtil.TryEnterNum()));
-             Console.WriteLine($"The most common number - {GetMostCommonNumber(array).Key}");
-             Console.WriteLine($"The amount of most common number - {GetMostCommonNumber(array).Count()}");
+             
+            
+            Console.WriteLine("Enter array size:");
+             var array = ArrayUtil.FillArray(InputUtil.TryEnterNaturalNum());
+             Console.WriteLine($"The most common number - {ArrayUtil.GetMostCommonNumber(array).Key}");
+             Console.WriteLine($"The amount of most common number - {ArrayUtil.GetMostCommonNumber(array).Count()}");
+
+           
+             Console.WriteLine("Enter size of array");
+             array = ArrayUtil.FillArray(InputUtil.TryEnterNaturalNum()); 
+             Console.WriteLine("Is array order by ascending - " + ArrayUtil.IsOrderedByAscending(array)); 
+             Console.WriteLine("Is array ordered by descending - " + ArrayUtil.IsOrderedByDescending(array));
              
              
              Console.WriteLine("Enter size of array");
-             var array = ArrayUtil.FillArray(Int32.Parse(InputUtil.TryEnterNum())); 
-             Console.WriteLine(ArrayUtil.IsOrderedByAscending(array)); 
-             Console.WriteLine(ArrayUtil.IsOrderedByDescending(array));
+             array = ArrayUtil.FillArrayInRange(InputUtil.TryEnterNaturalNum());
+             
+             Console.WriteLine("Min element of array - " + ArrayUtil.GetMin(array));
+             Console.WriteLine("Max element of array - " + ArrayUtil.GetMax(array));
+             Console.WriteLine("Min odd element - " + ArrayUtil.GetMin(ArrayUtil.GetOddNums(array)));
+             Console.WriteLine("Min even element - " + ArrayUtil.GetMin(ArrayUtil.GetEvenNums(array)));
+             var minNumPos = ArrayUtil.GetMinNumPosition(array);
+             Console.WriteLine("Min num position - " + minNumPos);
+             var maxNumPos = ArrayUtil.GetMaxNumPosition(array);
+             Console.WriteLine("Max num position - " + maxNumPos);
+             ArrayUtil.SwapArrayElements(array, minNumPos, maxNumPos);
+             Console.WriteLine("After swap :");
+             Console.WriteLine("Min num position - " + ArrayUtil.GetMinNumPosition(array));
+             Console.WriteLine("Max num position - " + ArrayUtil.GetMaxNumPosition(array));
+             
              Console.WriteLine("Enter size of array");
-             array = ArrayUtil.FillArray(Int32.Parse(InputUtil.TryEnterNum()));
-        */
+             ArrayUtil.TryEnterOrderedArray(InputUtil.TryEnterNaturalNum());
         }
     }
 }

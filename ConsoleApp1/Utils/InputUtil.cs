@@ -82,5 +82,17 @@ namespace ConsoleApp1.Utils
             Console.WriteLine("Incorrect input, try again");
             return TryEnterNaturalNum();
         }
+
+        public static int TryEnterNumInRange()
+        {
+            var number = int.Parse(TryEnterNum());
+            if (number >= -100 && number <= 100)
+            {
+                return number;
+            }
+
+            Console.WriteLine("Incorrect input, try again");
+            return TryEnterNumInRange();
+        }
     }
 }
