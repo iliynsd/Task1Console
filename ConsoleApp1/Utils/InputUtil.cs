@@ -94,5 +94,23 @@ namespace ConsoleApp1.Utils
             Console.WriteLine("Incorrect input, try again");
             return TryEnterNumInRange();
         }
+
+        public static bool TryEnterDirection()
+        {
+            Console.WriteLine("Enter direction: 0 - left, 1 - right");
+            var direction = TryEnterNum();
+            if (direction == "0")
+            {
+                return false;
+            }
+
+            if (direction == "1")
+            {
+                return true;
+            }
+            
+            Console.WriteLine("Incorrect input");
+            return TryEnterDirection();
+        }
     }
 }

@@ -44,125 +44,41 @@ namespace ConsoleApp1.Utils
             return maxNum;
         }
         
-        public static string GetOddNums(string numbers)
+       public static int SumThreeFirstOddNums(int n)
        {
-           string oddNums = string.Empty;
-           string num = String.Empty;
-           for (int i=0; i<numbers.Length; i++)
+           int sum = 0;
+           for (int i = 0, count = 0; i < n; i++)
            {
-               if (numbers[i] != ';')
+               Console.WriteLine("Enter num");
+               var num = int.Parse(InputUtil.TryEnterNum());
+               if (num % 2 != 0 && count < 3)
                {
-                   num += numbers[i];
-               }
-               else
-               {
-                   if (Int32.Parse(num) % 2 != 0)
-                   {
-                       oddNums += num;
-                       oddNums += ";";
-                   }
-
-                   num = string.Empty;
-               }
-           }
-
-           return oddNums;
-       }
-
-
-        public static string TryGetOddNums()
-        {
-            Console.WriteLine("Enter amount of numbers you want to enter");
-            var oddNumbers = GetOddNums(InputUtil.EnterListNums(Int32.Parse(InputUtil.TryEnterNum())));
-            if (!HasThreeNums(oddNumbers))
-            {
-                Console.WriteLine("Has not got three odd numbers");
-                return TryGetOddNums();
-            }
-
-            return oddNumbers;
-        }
-        
-       public static string GetFirstThreeNums(string numbers)
-       {
-           string firstThreeNums = string.Empty;
-           int j = 0;
-           for (int i = 0; i < 3; i++)
-           {
-               for (; j < numbers.Length; j++)
-               {
-                   if (numbers[j] != ';')
-                   {
-                       firstThreeNums += numbers[j];
-                   }
-                   else
-                   {
-                       firstThreeNums += ";";
-                       j++;
-                       break;
-                   }
-               }
-           }
-
-           return firstThreeNums;
-       }
-
-       public static string GetLastThreeNumsReversed(string numbers)
-       {
-           string result = string.Empty;
-           int count = -1;
-           for (int i = numbers.Length - 1; i > -1; i--)
-           {
-               if (numbers[i] == ';')
-               {
+                   sum += num;
                    count++;
-                   result += ';';
-                   continue;
                }
-               
-               if (count == 3)
-               {
-                   result = result.Remove(result.Length - 1); 
-                   break;
-               }
-               
-               result += numbers[i];
            }
 
-           return result;
+           return sum;
        }
 
-       public static string ReverseString(string data)
+       public static int SumThreeLastOddNums(int n)
        {
-           string reverseData = string.Empty;
-           for (int i = data.Length-1; i >= 0; i--)
+           int n1 = 0;
+           int n2 = 0;
+           int n3 = 0;
+           for (int i = 0; i < n; i++)
            {
-               reverseData += data[i];
-           }
-
-           return reverseData;
-       }
-
-       public static bool HasThreeNums(string numbers) => numbers.Count(i => i == ';') > 2; 
-
-       public static int SumStringNums(string numbers)
-       {
-           int result = 0;
-           string num = String.Empty;
-           for (int i=0; i<numbers.Length; i++)
-           {
-               if (numbers[i] != ';')
+               Console.WriteLine("Enter num");
+               var num = int.Parse(InputUtil.TryEnterNum());
+               if (num % 2 != 0)
                {
-                   num += numbers[i];
-               }
-               else
-               {
-                   result += Int32.Parse(num);
-                   num = string.Empty;
+                   n1 = n2;
+                   n2 = n3;
+                   n3 = num;
                }
            }
-           
-           return result;
+
+           return n1 + n2 + n3;
        }
     }
 }

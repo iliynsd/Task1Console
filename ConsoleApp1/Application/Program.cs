@@ -8,24 +8,20 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            
-            Console.WriteLine("Enter three-digit number");
-            Console.WriteLine("Sum - " + StringNumsUtil.CountNumerals(InputUtil.TryEnterThreeDigitNum()));
+           Console.WriteLine("Enter three-digit number");
+           Console.WriteLine("Sum - " + StringNumsUtil.CountNumerals(InputUtil.TryEnterThreeDigitNum()));
 
-            Console.WriteLine("Enter numbers, 0 - for stop");
-            Console.WriteLine("Num with max sum numerals - " + StringNumsUtil.FindNumWithMaxSumNumerals(InputUtil.TryEnterNumNotZero()));
+           Console.WriteLine("Enter numbers, 0 - for stop");
+           Console.WriteLine("Num with max sum numerals - " + StringNumsUtil.FindNumWithMaxSumNumerals(InputUtil.TryEnterNumNotZero()));
 
+           Console.WriteLine("Enter amount of numbers");
+           var sumFirstNums = StringNumsUtil.SumThreeFirstOddNums(InputUtil.TryEnterNaturalNum());
+           Console.WriteLine("Sum first three odd nums - " + sumFirstNums);
 
-            var firstThreeNums = StringNumsUtil.GetFirstThreeNums(StringNumsUtil.TryGetOddNums());
-            var sumFirstNums = StringNumsUtil.SumStringNums(firstThreeNums);
-            Console.WriteLine("Sum first three odd nums - " + sumFirstNums);
-
-            var lastThreeNums =
-                StringNumsUtil.ReverseString(StringNumsUtil.GetLastThreeNumsReversed(StringNumsUtil.TryGetOddNums()));
-            var sumLastNums = StringNumsUtil.SumStringNums(lastThreeNums);
-            Console.WriteLine("Sum last three odd nums - " + sumLastNums);
-
-
+           Console.WriteLine("Enter amount of numbers");
+           var sumLastNums = StringNumsUtil.SumThreeLastOddNums(InputUtil.TryEnterNaturalNum());
+           Console.WriteLine("Sum last three odd nums - " + sumLastNums);
+           
             Console.WriteLine("Enter num under 20");
             var firstNum = InputUtil.TryEnterNumUnder20();
             Console.WriteLine("Enter num under 20");
@@ -52,7 +48,8 @@ namespace ConsoleApp1
             Console.Write("Sum of row from 1 to 50 with step 2 - ");
             Console.WriteLine(RowUtil.SumOfRow(1, 50, 2));
             Console.Write("Sum of row 6+10+14 + ... + 46  -  ");
-            Console.WriteLine(RowUtil.SumOfRow(6, 46, out int amount));
+            int amount;
+            Console.WriteLine(RowUtil.SumOfRow(6, 46, out amount));
             Console.Write($"Amount of terms - {amount}");
 
             Console.Write("Sum of row 6+10+14 + ... (only ten terms) - ");
@@ -71,8 +68,7 @@ namespace ConsoleApp1
             Console.WriteLine($"Sum of Fibonacci nums - {fibonacciSum}");
 
             Console.WriteLine("--------------First module is end--------------------");
-
-             
+            
             
             Console.WriteLine("Enter array size:");
              var array = ArrayUtil.FillArray(InputUtil.TryEnterNaturalNum());
@@ -87,7 +83,7 @@ namespace ConsoleApp1
              
              
              Console.WriteLine("Enter size of array");
-             array = ArrayUtil.FillArrayInRange(InputUtil.TryEnterNaturalNum());
+              array = ArrayUtil.FillArrayInRange(InputUtil.TryEnterNaturalNum());
              
              Console.WriteLine("Min element of array - " + ArrayUtil.GetMin(array));
              Console.WriteLine("Max element of array - " + ArrayUtil.GetMax(array));
@@ -102,8 +98,80 @@ namespace ConsoleApp1
              Console.WriteLine("Min num position - " + ArrayUtil.GetMinNumPosition(array));
              Console.WriteLine("Max num position - " + ArrayUtil.GetMaxNumPosition(array));
              
-             Console.WriteLine("Enter size of array");
-             ArrayUtil.TryEnterOrderedArray(InputUtil.TryEnterNaturalNum());
+            
+            ArrayUtil.ShowArray(ArrayUtil.MergeArrays());
+            
+            TxtUtil.WriteToFile(TxtUtil.ReadFile().OrderBy(i => i).ToArray());
+            TxtUtil.WriteToFile(TxtUtil.ReadFile().OrderByDescending(i => i).ToArray());
+
+            Console.WriteLine("Enter size of array:");
+            var size = InputUtil.TryEnterNaturalNum();
+             array = ArrayUtil.FillArray(size);
+            Console.WriteLine("Enter shift");
+            var shift = InputUtil.TryEnterNaturalNum();
+            var direction = InputUtil.TryEnterDirection();
+            var rez = ArrayUtil.ShiftArray(array, shift, direction);
+            ArrayUtil.ShowArray(rez);
+           
+           Console.WriteLine("------------STRINGS------------------------");
+           
+           StringUtil.MakeDifferentSentences();
+           
+           var arrayStrings = new[] {"apple", "banana", "orange", "kiwi", "mango"};
+           StringUtil.ShowSeparatedByComma(arrayStrings);
+           Console.WriteLine();
+           StringUtil.ShowLineByLine(arrayStrings);
+
+           string firstString = "привет";
+           string secondString = "здраствуйте";
+           StringUtil.CompareStrings(firstString, secondString);
+           firstString = "двадцать";
+           secondString = "двенадцать";
+           StringUtil.CompareStrings(firstString, secondString);
+           firstString = "синус";
+           secondString = "синусоида";
+           StringUtil.CompareStrings(firstString, secondString);
+           firstString = "14";
+           secondString = "81";
+           StringUtil.CompareStrings(firstString, secondString);
+
+           string text = "Хорошо в лесу...";
+           char symbol = 'о';
+           Console.WriteLine(text);
+           Console.WriteLine($"Index of first occurrence of '{symbol}' - " + StringUtil.FirstOccurrenceIndex(text, symbol));
+
+           text = "Эх, дороги, пыль да туман";
+           Console.WriteLine(text);
+           Console.WriteLine($"Index of first occurrence of '{symbol}' - " + StringUtil.FirstOccurrenceIndex(text, symbol));
+           text = "Семнадцать вариантов решения";
+           Console.WriteLine(text);
+           Console.WriteLine($"Index of first occurrence of '{symbol}' - " + StringUtil.FirstOccurrenceIndex(text, symbol));
+
+           symbol = 'у';
+           text = "Где такое интересное место?";
+           Console.WriteLine(text);
+           Console.WriteLine($"Index of last occurrence of '{symbol}' - " + StringUtil.LastOccurrenceIndex(text, symbol));
+           
+           text = "У меня дома есть ноутбук.";
+           Console.WriteLine(text);
+           Console.WriteLine($"Index of last occurrence of '{symbol}' - " + StringUtil.LastOccurrenceIndex(text, symbol));
+
+           text = "Винтажный стул";
+           Console.WriteLine(text);
+           Console.WriteLine($"Index of last occurrence of '{symbol}' - " + StringUtil.LastOccurrenceIndex(text, symbol));
+
+           
+           Console.WriteLine(StringUtil.InsertString());
+           Console.WriteLine(StringUtil.ReplaceString());
+           Console.WriteLine(StringUtil.RemoveString());
+           text = "ПрыгаЮщие БуквЫ";
+           Console.WriteLine(text);
+           Console.WriteLine(text.ToLower());
+           Console.WriteLine(text.ToUpper());
+
+           text = "Первый рабочий день прошел на ура";
+           var masBySpliString = StringUtil.SplitStringIntoArray(text);
+           StringUtil.ShowLineByLine(masBySpliString);
         }
     }
 }
