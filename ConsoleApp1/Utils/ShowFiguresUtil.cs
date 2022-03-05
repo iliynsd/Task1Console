@@ -72,40 +72,6 @@ namespace ConsoleApp1.Utils
             }
         }
         
-        /*public static void ShowRhombus(int side)
-        {
-            int center = side / 2;
-            for(int i = 0; i < side; i++)
-            {
-                for(int j = 0; j < side; j++)
-                {
-                    if(i <= center)
-                    {
-                        if (j >= center - i && j <= center + i)
-                        {
-                            Console.Write("*");
-                        }
-                        else
-                        {
-                            Console.Write(" ");
-                        }
-                    }
-                    else
-                    {
-                        if (j >= center + i - side + 1 && j <= center - i + side - 1)
-                        {
-                            Console.Write("*");
-                        }
-                        else
-                        {
-                            Console.Write(" ");
-                        }
-                    }
-                }
-                Console.WriteLine();
-            }
-        }
-        */
         public static void ShowRhombus(int side)
         {
             int i, j;

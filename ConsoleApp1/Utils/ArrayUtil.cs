@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ConsoleApp1.Utils
@@ -27,8 +28,35 @@ namespace ConsoleApp1.Utils
 
             return array;
         }
+        
+        public static List<int> GetNumerals(int[] array)
+        {
+            var numerals = new List<int>();
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = Math.Abs(array[i]);
+                while (array[i] > 0)
+                {
+                    numerals.Add(array[i] % 10);
+                    array[i] /= 10;
+                }
+            }
 
-        public static IGrouping<int,int> GetMostCommonNumber(int[] array) => array.GroupBy(x => x).OrderByDescending(x => x.Count()).First(); 
+            return numerals;
+        }
+        
+        public static IGrouping<int,int> GetMostCommonNumeral(List<int> numerals)
+        {
+            var maxCount = numerals.GroupBy(i => i).Select(i => i.Count()).Max();
+            var maxKey = numerals.GroupBy(i => i).Select(i => i.Key).Max();
+
+            var mostCommonNums = numerals.GroupBy(x => x).ToList().FindAll(i => i.Count() == maxCount).ToList();
+            if (mostCommonNums.Count < 2)
+            {
+                return mostCommonNums[0];
+            }
+            return mostCommonNums.Find(i => i.Key == maxKey);
+        }
         
         public static bool IsOrderedByAscending(int[] array)
         {
